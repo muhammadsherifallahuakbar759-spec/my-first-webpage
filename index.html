@@ -1,77 +1,162 @@
 <style>
+/* Global Styling & Smooth Dark Space Background */
 body {
-  background-color: #0f172a;
+  background: radial-gradient(circle at top, #1e1b4b 0%, #0f172a 60%, #030712 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  color: #ffffff;
 }
 
-.card {
-  background: linear-gradient(145deg, #1e293b, #0f172a);
-  padding: 30px;
-  border-radius: 20px;
+/* Container for the whole screen layout */
+.hero-container {
   text-align: center;
-  border: 1px solid #334155;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-  max-width: 280px;
+  max-width: 600px;
   width: 90%;
-  margin: 20px auto;
+  padding: 40px 20px;
+  position: relative;
 }
 
-.profile-image {
-  font-size: 40px;
-  background-color: #334155;
-  width: 80px;
-  height: 80px;
-  line-height: 80px;
-  border-radius: 50%;
-  margin: 0 auto 15px auto;
-  border: 3px solid #38bdf8;
-  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+/* Floating Astronaut Element (Inspired by 1000419128.jpg) */
+.floating-avatar {
+  font-size: 70px;
+  display: inline-block;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.6));
+  animation: float3D 4s ease-in-out infinite;
 }
 
-h2 {
-  color: #f8fafc;
-  margin: 10px 0 5px 0;
-  font-size: 22px;
+/* Smooth 3D Floating Keyframe Animation */
+@keyframes float3D {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
 }
 
-.title {
-  color: #38bdf8;
-  font-weight: 600;
-  margin-bottom: 15px;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.bio {
-  color: #94a3b8;
+/* Premium Badge styling */
+.brand-badge {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 16px;
+  border-radius: 30px;
   font-size: 13px;
-  line-height: 1.5;
-  margin-bottom: 25px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #a5b4fc;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
 }
 
-button {
-  background: linear-gradient(90deg, #38bdf8, #0284c7);
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #38bdf8;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #38bdf8;
+}
+
+/* Epic Headline (Inspired by 1000419129.jpg) */
+h1 {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 20px 0;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, #ffffff 40%, #c7d2fe 70%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p.subtitle {
+  color: #94a3b8;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+/* Fully Functional, Glowing Prompt Bar (Inspired by 1000419129.jpg) */
+.prompt-form {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 8px 8px 20px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+/* Vibrant glowing border effect when typing inside the bar */
+.prompt-form:focus-within {
+  border-color: #6366f1;
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.35);
+}
+
+.prompt-icon {
+  color: #6366f1;
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+.prompt-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 15px;
+  flex-grow: 1;
+}
+
+.prompt-input::placeholder {
+  color: #64748b;
+}
+
+/* The Active Action Button */
+.generate-btn {
+  background: linear-gradient(90deg, #6366f1, #4f46e5);
   color: white;
   border: none;
-  padding: 12px 28px;
-  border-radius: 50px;
-  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 14px;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
-  width: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.generate-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
 }
 </style>
 
-<div class="card">
-  <div class="profile-image">💻</div>
-  <h2>Muhammad Sherif</h2>
-  <p class="title">Frontend Developer</p>
-  <p class="bio">Building clean, responsive web layouts and turning ideas into code.</p>
-  <button>View My GitHub</button>
+<div class="hero-container">
+  <!-- Floating Asset -->
+  <div class="floating-avatar">🧑‍🚀</div>
+
+  <!-- Top Badge -->
+  <div class="brand-badge">
+    <span class="badge-dot"></span> SHERIF AI ALPHA
+  </div>
+
+  <!-- Headline Content -->
+  <h1>Sites beyond imagination,<br>one prompt away.</h1>
+  <p class="subtitle">Start with AI, ship completely interactive digital universes with zero code down.</p>
+
+  <!-- Working Interactive Search Form -->
+  <form class="prompt-form" action="https://www.google.com/search" method="get" target="_blank">
+    <span class="prompt-icon">✦</span>
+    <input type="text" name="q" class="prompt-input" placeholder="Ask anything to test the system..." required>
+    <button type="submit" class="generate-btn">Generate →</button>
+  </form>
 </div>
